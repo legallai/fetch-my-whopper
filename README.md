@@ -16,16 +16,11 @@ Write the claim code on your receipt, and redeem for a free whopper!
 node index.js
 ```
 
-Send a POST request to *http://localhost:4000/whopper*
-```json
-{
-    "storeNumber": "21019", //you'll find the real infos or your receipt
-    "date": "12/09/2018", //DD/MM/YYYY
-    "time": "12:03"
-}
-```
+Go to *http://localhost:4000/*
 
-And you'll get the result :
+Type in your store number and click submit
+
+After a while you'll get the result :
 ```
 Code de validation : CF101010
 ```
