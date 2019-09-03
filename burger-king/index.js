@@ -12,6 +12,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json())
 
+function formatDay(day) {
+    return day > 9 ? `${day}` : `0${day}`
+}
 function formatMonth(month) {
     return month > 9 ? `${month}` : `0${month}`
 }
@@ -65,7 +68,7 @@ const fetchWhopper = async function(storeNumber = '21019', date, time) {
     await page.waitForSelector('#content > #surveyEntryForm > #surveyQuestions > .IndexText01 > #SurveyCode')
     await page.type('#content > #surveyEntryForm > #surveyQuestions > .IndexText01 > #SurveyCode', storeNumber)
 
-    await page.select('#content > #surveyEntryForm > #surveyQuestions > .IndexText01 > #InputDay', dateFormatted.get('date').toString())
+    await page.select('#content > #surveyEntryForm > #surveyQuestions > .IndexText01 > #InputDay', formatDay(dateFormatted.get('date')))
     await page.select('#content > #surveyEntryForm > #surveyQuestions > .IndexText01 > #InputMonth', formatMonth(dateFormatted.get('month')+1))
 
     await page.evaluate(time => {
